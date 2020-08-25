@@ -8,29 +8,8 @@ body {
 
   overflow: hidden;
   position: fixed;
-
-  $gradient0: #333333;
-  $gradient1: #000000;
-
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6d6d6d+0,000000+100 */
-  background: $gradient0; /* Old browsers */
-  background: -moz-radial-gradient(
-    center,
-    ellipse cover,
-    $gradient0 0%,
-    $gradient1 100%
-  ); /* FF3.6-15 */
-  background: -webkit-radial-gradient(
-    center,
-    ellipse cover,
-    $gradient0 0%,
-    $gradient1 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: radial-gradient(
-    ellipse at center,
-    $gradient0 0%,
-    $gradient1 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: url("./assets/css-img/bg.jpg");
+  background-size: cover;
 }
 
 html {
@@ -69,7 +48,7 @@ p {
   left: 0;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -107,18 +86,9 @@ p {
   }
 }
 
-.env {
-  position: fixed;
-  width: 100%;
-  z-index: 9999;
-  color: white;
-  top: 100px;
-  font-size: 24px;
-  padding: 20px;
-}
-
 .title {
   color: white;
   font-size: 24px;
   letter-spacing: 28px;
+  padding-left: 10%;
 }
