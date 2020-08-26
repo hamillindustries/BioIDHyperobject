@@ -20,19 +20,25 @@ class SceneApp extends Scene {
   constructor() {
     super();
     GL.enableAlphaBlending();
-    // this.orbitalControl.rx.value = this.orbitalControl.ry.value = 0.3;
-    // this.orbitalControl.radius.value = 5;
-
-    this.orbitalControl.rx.setTo(0.3);
-    this.orbitalControl.ry.setTo(0.3);
-    this.orbitalControl.radius.setTo(13);
+    this.orbitalControl.rx.value = 0.3;
+    this.orbitalControl.radius.value = 13;
     this.camera.setPerspective((45 * Math.PI) / 180, GL.aspectRatio, 1, 30);
 
     this.mtx = mat4.create();
     mat4.translate(this.mtx, this.mtx, [0, -3, 0]);
     this.count = 0;
 
+    this._offset = new alfrid.TweenNumber(1, "linear", 0.005);
+
     this.resize();
+    const { gui } = window;
+    gui.add(this, "toggle");
+
+    this.toggle();
+  }
+
+  toggle() {
+    this._offset.value = this._offset.targetValue === 1 ? 0 : 1;
   }
 
   _initTextures() {
@@ -64,11 +70,14 @@ class SceneApp extends Scene {
       .draw();
 
     // draw sim
+    const { dirX, dirY, dirZ, noise } = Config;
     this._drawSim = new alfrid.Draw()
       .setMesh(alfrid.Geom.bigTriangle())
       .useProgram(alfrid.ShaderLibs.bigTriangleVert, fsSim)
       .setClearColor(0, 0, 0, 0)
-      .uniform("uSeed", "float", Math.random() * 0xff);
+      .uniform("uGrowDir", "vec3", [dirX, dirY, dirZ])
+      .uniform("uSeed", "float", Math.random() * 0xff)
+      .uniform("uNoise", "float", noise);
 
     // draw trails
     this._drawTrails = new DrawTrails();
@@ -114,8 +123,10 @@ class SceneApp extends Scene {
         .draw();
     }
 */
+    this._drawTrails.uniform("uOffset", "float", this._offset.value);
     for (let j = 0; j < NUM_SETS; j++) {
       this._drawTrails.uniform("uSetPercent", "float", j / NUM_SETS);
+
       for (let i = 0; i < 15; i++) {
         const t = this._fbo.all[i + j * 15 - j].getTexture(0);
         this._drawTrails.uniformTexture(`texture${i}`, t, i);
@@ -139,7 +150,7 @@ class SceneApp extends Scene {
   }
 
   resize(w, h) {
-    // resize(1080, 1350);
+    resize(w, h);
     this.camera.setAspectRatio(GL.aspectRatio);
   }
 }

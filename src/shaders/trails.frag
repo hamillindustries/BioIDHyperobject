@@ -7,6 +7,7 @@ varying vec3 vNormal;
 varying vec3 vExtra;
 varying float vDebug;
 uniform vec3 uColors[5];
+uniform float uOffset;
 
 #define LIGHT vec3(1.0)
 #pragma glslify: diffuse    = require(glsl-utils/diffuse.glsl)
@@ -38,15 +39,5 @@ void main(void) {
     }
 
     gl_FragColor = vec4(vec3(d) * color, 1.0);
-
-    float fogDistance   = gl_FragCoord.z / gl_FragCoord.w;
-	float fogAmount     = fogFactorExp2(fogDistance - 10.0, FOG_DENSITY);
-    fogAmount = mix(fogAmount, 1.0, .35 - vDebug * 0.1);
-    fogAmount = smoothstep(0.2, 1.0, fogAmount);
-    
-	const vec4 fogColor = vec4(0.0, 0.0, 0.0, 1.0); // white
-	
-	// gl_FragColor        = mix(gl_FragColor, fogColor, fogAmount);
-    // gl_FragColor.rgb *= 1.25;
     // gl_FragColor = vec4(vec3(vDebug), 1.0);
 }

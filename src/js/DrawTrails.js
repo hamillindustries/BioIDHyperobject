@@ -50,32 +50,38 @@ class DrawTrails extends alfrid.Draw {
     const posOffsets = [];
     for (let i = 0; i < numParticles; i++) {
       for (let j = 0; j < numParticles; j++) {
-        posOffsets.push([i / numParticles, j / numParticles, Math.random()]);
+        posOffsets.push([
+          i / numParticles,
+          j / numParticles,
+          Math.random(),
+          Math.random(),
+        ]);
       }
     }
     mesh.bufferInstance(posOffsets, "aPosOffset");
 
-    const colorTheme = getColorTheme();
-    const colors = colorTheme.reduce((total, curr) => {
-      total = total.concat(curr);
-      return total;
-    }, []);
+    this.randomColor();
 
     window.addEventListener("keydown", (e) => {
       if (e.keyCode === 32) {
-        const colorTheme = getColorTheme();
-        const colors = colorTheme.reduce((total, curr) => {
-          total = total.concat(curr);
-          return total;
-        }, []);
-        this.uniform("uColors", "vec3", colors);
+        this.randomColor();
       }
     });
 
     this.setMesh(mesh)
       .useProgram(vs, fs)
-      .uniform("uRadius", "float", 0.01)
-      .uniform("uColors", "vec3", colors);
+      .uniform("uRadius", "float", 0.01);
+
+    gui.add(this, "randomColor");
+  }
+
+  randomColor() {
+    const colorTheme = getColorTheme();
+    const colors = colorTheme.reduce((total, curr) => {
+      total = total.concat(curr);
+      return total;
+    }, []);
+    this.uniform("uColors", "vec3", colors);
   }
 }
 

@@ -4,7 +4,7 @@ precision highp float;
 attribute vec3 aVertexPosition;
 attribute vec2 aTextureCoord;
 attribute vec3 aNormal;
-attribute vec3 aPosOffset;
+attribute vec4 aPosOffset;
 
 uniform mat4 uModelMatrix;
 uniform mat4 uViewMatrix;
@@ -12,6 +12,7 @@ uniform mat4 uProjectionMatrix;
 uniform float uRadius;
 uniform float uSetPercent;
 uniform float uNumSets;
+uniform float uOffset;
 
 uniform sampler2D texture0;
 uniform sampler2D texture1;
@@ -89,11 +90,16 @@ vec3 getDir(float index, vec2 uv) {
 
 void main(void) {
 
-    float t = aTextureCoord.x / uNumSets;
-    vDebug = 1.0 - (t + uSetPercent);
-    float radiusScale = smoothstep(0.0, 0.5, vDebug);
+    float offset = uOffset * 2.0 - aPosOffset.w;
+    offset = clamp(offset, 0.0, 1.0);
 
-    vec3 pos = vec3(0.0, uRadius * radiusScale, 0.0);
+    float t = aTextureCoord.x / uNumSets;
+    float debug = 1.0 - (t + uSetPercent);
+    float radiusScale = smoothstep(0.0, 0.5, debug);
+    float openingScale = smoothstep(offset, offset + 0.1, debug);
+    vDebug = debug;
+
+    vec3 pos = vec3(0.0, uRadius * radiusScale * openingScale, 0.0);
     float a = aTextureCoord.y * PI * 2.0;
     pos.yz = rotate(pos.yz, -a);
 
@@ -110,5 +116,5 @@ void main(void) {
     n.yz = rotate(n.yz, -a);
     vNormal = n;
     vNormalOrg = aNormal;
-    vExtra = aPosOffset;
+    vExtra = aPosOffset.xyz;
 }
