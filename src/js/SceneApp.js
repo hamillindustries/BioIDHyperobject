@@ -35,6 +35,66 @@ class SceneApp extends Scene {
     gui.add(this, "toggle");
 
     this.toggle();
+
+    this.enableDropImage();
+  }
+
+  enableDropImage() {
+    this.canvasImg = document.createElement("canvas");
+    this.canvasImg.width = this._texture.width;
+    this.canvasImg.height = this._texture.height;
+    this.ctxImg = this.canvasImg.getContext("2d");
+    const dropArea = window;
+
+    const preventDefaults = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+    };
+
+    ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
+      dropArea.addEventListener(eventName, preventDefaults, false);
+    });
+
+    const handleDrop = (e) => {
+      let dt = e.dataTransfer;
+      let files = dt.files;
+      const file = files[0];
+
+      let reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        let img = document.createElement("img");
+
+        img.onload = () => {
+          if (
+            img.width === this._texture.width &&
+            img.height === this._texture.height
+          ) {
+            this._texture.updateTexture(img);
+          } else {
+            this.ctxImg.drawImage(
+              img,
+              0,
+              0,
+              img.width,
+              img.height,
+              0,
+              0,
+              this.canvasImg.width,
+              this.canvasImg.height
+            );
+
+            this._texture.updateTexture(this.canvasImg);
+          }
+
+          //   this._texture
+          // }
+        };
+        img.src = reader.result;
+      };
+    };
+
+    dropArea.addEventListener("drop", handleDrop, false);
   }
 
   toggle() {
@@ -51,6 +111,7 @@ class SceneApp extends Scene {
     };
     // init fboArray
     this._fbo = new alfrid.FboArray(TOTAL_FRAMES, num, num, oSettings, 3);
+    this._texture = Assets.get("palette");
   }
 
   _initViews() {
@@ -76,12 +137,14 @@ class SceneApp extends Scene {
       .useProgram(alfrid.ShaderLibs.bigTriangleVert, fsSim)
       .setClearColor(0, 0, 0, 0)
       .uniform("uGrowDir", "vec3", [dirX, dirY, dirZ])
-      .uniform("uSeed", "float", Math.random() * 0xff)
+      .uniform("uSeed", "float", Config.seed)
       .uniform("uNoise", "float", noise);
 
     // draw trails
     this._drawTrails = new DrawTrails();
-    this._drawTrails.uniform("uNumSets", "float", NUM_SETS);
+    this._drawTrails
+      .uniform("uNumSets", "float", NUM_SETS)
+      .uniformTexture("texture", this._texture, 15);
 
     // debug POINTS
     this._drawPoints = new DrawPoints();

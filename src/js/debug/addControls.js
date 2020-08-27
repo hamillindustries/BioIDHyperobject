@@ -20,6 +20,10 @@ const addControls = (scene) => {
     gui.add(Config, "dirY", 0, 2).onFinishChange(Settings.reload);
     gui.add(Config, "dirZ", -2, 2).onFinishChange(Settings.reload);
     gui.add(Config, "noise", 0, 3).onFinishChange(Settings.reload);
+    gui
+      .add(Config, "seed", 0, 500)
+      .step(1)
+      .onFinishChange(Settings.reload);
     gui.add(oControl, "save").name("Save Settings");
     gui.add(Settings, "reset").name("Reset Default");
   }, 200);

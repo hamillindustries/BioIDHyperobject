@@ -60,28 +60,9 @@ class DrawTrails extends alfrid.Draw {
     }
     mesh.bufferInstance(posOffsets, "aPosOffset");
 
-    this.randomColor();
-
-    window.addEventListener("keydown", (e) => {
-      if (e.keyCode === 32) {
-        this.randomColor();
-      }
-    });
-
     this.setMesh(mesh)
       .useProgram(vs, fs)
       .uniform("uRadius", "float", 0.01);
-
-    gui.add(this, "randomColor");
-  }
-
-  randomColor() {
-    const colorTheme = getColorTheme();
-    const colors = colorTheme.reduce((total, curr) => {
-      total = total.concat(curr);
-      return total;
-    }, []);
-    this.uniform("uColors", "vec3", colors);
   }
 }
 

@@ -6,4 +6,5 @@ export default {
   dirY: 0.5,
   dirZ: 0,
   noise: 1,
+  seed: 1,
 };
