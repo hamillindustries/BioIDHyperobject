@@ -86,9 +86,6 @@ class SceneApp extends Scene {
 
             this._texture.updateTexture(this.canvasImg);
           }
-
-          //   this._texture
-          // }
         };
         img.src = reader.result;
       };
@@ -125,7 +122,7 @@ class SceneApp extends Scene {
     this._drawFloor = new DrawFloor();
 
     // draw save
-    new DrawSave()
+    this._drawSave = new DrawSave()
       .bindFrameBuffer(this._fbo.read)
       .setClearColor(0, 0, 0, 1)
       .draw();
@@ -155,11 +152,23 @@ class SceneApp extends Scene {
     }
   }
 
-  updatePos() {
-    if (this.count++ > TOTAL_FRAMES - 1) {
-      return;
+  regenerate() {
+    this._drawSave
+      .bindFrameBuffer(this._fbo.read)
+      .setClearColor(0, 0, 0, 1)
+      .draw();
+
+    this._drawSim.uniform("uSeed", "float", Config.seed);
+    let i = TOTAL_FRAMES;
+    while (i--) {
+      this.updatePos();
     }
 
+    this._offset.setTo(1);
+    this._offset.value = 0;
+  }
+
+  updatePos() {
     this._drawSim
       .bindFrameBuffer(this._fbo.write)
       .uniformTexture("texturePos", this._fbo.read.getTexture(0), 0)

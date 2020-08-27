@@ -23,7 +23,10 @@ const addControls = (scene) => {
     gui
       .add(Config, "seed", 0, 500)
       .step(1)
-      .onFinishChange(Settings.reload);
+      .onFinishChange(() => {
+        scene.regenerate();
+        Settings.refresh();
+      });
     gui.add(oControl, "save").name("Save Settings");
     gui.add(Settings, "reset").name("Reset Default");
   }, 200);
