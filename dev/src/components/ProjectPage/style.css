@@ -1,0 +1,51 @@
+.ProjectWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+
+  transition: opacity 0.5s ease-in-out;
+}
+
+.ProjectWrapper.show {
+  opacity: 1;
+
+  transition: opacity 0.5s ease-in-out 1s;
+}
+
+.TextContainer {
+  width: 50%;
+  height: 100%;
+  float: left;
+
+  box-sizing: border-box;
+}
+
+.LeftContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.LeftContainer h2 {
+  font-size: 50px;
+  letter-spacing: 5px;
+  color: #fff8e6;
+}
+
+.RightContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  padding: 10%;
+}
+
+.RightContainer p {
+  color: #fff8e6;
+}

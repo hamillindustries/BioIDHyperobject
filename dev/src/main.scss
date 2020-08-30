@@ -1,0 +1,34 @@
+$buttonMargin: 50px;
+$buttonHoverRange: 5px;
+
+.arrow-left {
+  transform: scale(-1, 1);
+  left: $buttonMargin;
+
+  &:hover {
+    transform: translate(-$buttonHoverRange, 0) scale(-1, 1);
+  }
+}
+
+.arrow-right {
+  right: $buttonMargin;
+
+  &:hover {
+    transform: translate($buttonHoverRange, 0);
+  }
+}
+
+$buttonSize: 100px;
+.arrow-button {
+  position: fixed;
+  width: $buttonSize;
+  height: $buttonSize;
+  top: 50%;
+  margin-top: -$buttonSize/2;
+  background: url("images/arrow.png");
+  background-size: cover;
+  z-index: 8;
+  cursor: pointer;
+
+  transition: transform 0.3s ease-in-out;
+}

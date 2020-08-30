@@ -1,0 +1,15 @@
+.TextButton {
+  color: #fff8e6;
+  font-family: "Work Sans Medium", sans-serif;
+  font-size: 33px;
+  cursor: pointer;
+  user-select: none;
+  padding: 50px;
+
+  transition: opacity 0.5s ease-in-out;
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
