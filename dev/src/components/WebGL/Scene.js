@@ -34,7 +34,7 @@ class Scene {
 
     // states
     this._index = 0;
-    this._nextIndex = 1;
+    this._nextIndex = 0;
 
     this.mtx = mat4.create();
     this.mtxTranslate = mat4.create();
@@ -180,6 +180,10 @@ class Scene {
     GL.clear(0, 0, 0, 1);
     GL.setMatrices(this.camera);
     GL.rotate(this.mtx);
+
+    if (this._index === 0) {
+      return;
+    }
 
     this._drawTrails
       .uniform("uOffset", "float", this._offset.value)

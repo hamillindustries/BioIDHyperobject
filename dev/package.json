@@ -1,6 +1,7 @@
 {
   "name": "bioid",
   "version": "0.1.0",
+  "homepage": "./", 
   "private": true,
   "dependencies": {
     "@material/icon-button": "^7.0.0",
