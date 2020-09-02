@@ -15,7 +15,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentPage: 0,
+      currentPage: 1,
       showTeamPage: false,
     };
 

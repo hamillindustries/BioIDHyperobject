@@ -18,8 +18,13 @@ class WebGL extends Component {
 
   componentDidMount() {
     const { ref } = this;
+    const { currentPage } = this.props;
     this.scene = new Scene();
     ref.current.appendChild(this.scene.canvas);
+
+    if (currentPage > 0) {
+      this.scene.show(currentPage);
+    }
 
     window.addEventListener("resize", () => this.resize());
   }

@@ -61,7 +61,7 @@ class Scene {
 
   // public methods
   show(mIndex) {
-    console.log("show", mIndex);
+    // console.log("show", mIndex);
     if (this._index > 0) {
       this.close();
     }
@@ -73,8 +73,8 @@ class Scene {
       return;
     }
     const oSetting = Settings[mIndex - 1];
-    console.log("goto", mIndex);
-    console.log("using texture", `Project_0${mIndex}`);
+    // console.log("goto", mIndex);
+    // console.log("using texture", `Project_0${mIndex}`);
     this._texture = Assets.get(`Project_0${mIndex}`);
 
     this.regenerate(oSetting);
@@ -137,7 +137,7 @@ class Scene {
       .draw();
 
     const { dirX, dirY, dirZ, noise, seed } = mSettings;
-    console.log("regenerate", mSettings);
+    // console.log("regenerate", mSettings);
     this._drawSim
       .uniform("uNoise", "float", noise)
       .uniform("uGrowDir", "vec3", [dirX, dirY, dirZ])
