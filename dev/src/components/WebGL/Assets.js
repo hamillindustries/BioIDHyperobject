@@ -18,7 +18,6 @@ const getExtension = function (mFile) {
 
 Assets.init = function (mAssets) {
   assets = mAssets;
-  let hdrCubemaps = {};
   _assets = assetsToLoad.map((o) => {
     const ext = getExtension(o.url);
     const file = getAsset(o.id);
@@ -32,7 +31,11 @@ Assets.init = function (mAssets) {
           id: o.id,
           file: texture,
         };
-        break;
+      default:
+        return {
+          id: o.id,
+          file,
+        };
     }
   });
 

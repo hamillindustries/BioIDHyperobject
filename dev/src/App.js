@@ -17,7 +17,7 @@ class App extends Component {
     super();
     this.state = {
       currentPage: 0,
-      showTeamPage: false,
+      showTeamPage: true,
     };
 
     window.addEventListener("keydown", (e) => {
@@ -55,7 +55,7 @@ class App extends Component {
         <div className="footer">
           <TextButton
             text={"Team"}
-            visible={true}
+            visible={!showTeamPage}
             onClick={() => this.toggleTeam()}
           />
           <TextButton
