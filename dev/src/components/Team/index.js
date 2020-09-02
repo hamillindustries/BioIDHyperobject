@@ -11,15 +11,35 @@ class Team extends Component {
 
     this.state = {
       selectedIndex: -1,
+      startAnimation: false,
     };
   }
 
   _onMember(mIndex) {
-    this.setState({ selectedIndex: mIndex });
+    if (this.state.selectedIndex === mIndex) {
+      return;
+    }
+    this.setState({ selectedIndex: mIndex, startAnimation: false });
+
+    if (this._timeout !== undefined) {
+      window.clearTimeout(this._timeout);
+    }
+
+    this._timeout = setTimeout(() => this.playAnim(), 100);
+  }
+
+  componentDidMount() {
+    this._timeout = setTimeout(() => this.playAnim(), 100);
+  }
+
+  playAnim() {
+    this.setState({
+      startAnimation: true,
+    });
   }
 
   render() {
-    const { selectedIndex } = this.state;
+    const { selectedIndex, startAnimation } = this.state;
     const { display, onClose } = this.props;
     const { title, intro, credits, members } = TeamData;
     const className = `TeamWrapper ${display ? "show" : ""}`;
@@ -36,7 +56,9 @@ class Team extends Component {
 
     return (
       <div className={className}>
-        <div className="team_conatiner-top">
+        <div
+          className={`team_conatiner-top ${startAnimation ? "showMember" : ""}`}
+        >
           <div className="team_text-left team_text">
             <p className={classNameTitle} dangerouslySetInnerHTML={oTitle} />
             <p className="team_member-desc" dangerouslySetInnerHTML={oDesc} />

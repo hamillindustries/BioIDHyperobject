@@ -4,7 +4,7 @@
   width: 100%;
   height: 100%;
   z-index: 9;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   opacity: 0;
 
   transition: opacity 0.5s ease-in-out;
@@ -41,14 +41,31 @@ $padding: 150px;
 .team_member-title {
   font-size: 70px;
   margin-bottom: 30px;
+  opacity: 0;
+  transform: translate(0, -10px);
 
   &.small {
     font-size: 50px;
+  }
+
+  .showMember & {
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-out;
+    opacity: 1;
+    transform: translate(0, 0);
   }
 }
 .team_member-desc {
   font-size: 21px;
   white-space: pre-wrap;
+
+  opacity: 0;
+  transform: translate(0, -10px);
+
+  .showMember & {
+    transition: opacity 0.35s ease-in-out 0.2s, transform 0.4s ease-in;
+    opacity: 1;
+    transform: translate(0, 0);
+  }
 
   a {
     color: inherit;

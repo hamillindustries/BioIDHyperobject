@@ -38,7 +38,7 @@ class Scene {
 
     this.mtx = mat4.create();
     this.mtxTranslate = mat4.create();
-    mat4.translate(this.mtxTranslate, this.mtxTranslate, [-4, -2.5, 0]);
+    mat4.translate(this.mtxTranslate, this.mtxTranslate, [-3.5, -2.5, 0]);
 
     this._offset = new alfrid.TweenNumber(1, "linear", 0.005);
     // this._offset = new alfrid.EaseNumber(1, 0.005);

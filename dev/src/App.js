@@ -16,7 +16,7 @@ class App extends Component {
     super();
     this.state = {
       currentPage: 0,
-      showTeamPage: true,
+      showTeamPage: false,
     };
 
     window.addEventListener("keydown", (e) => {
@@ -46,7 +46,6 @@ class App extends Component {
     const { currentPage, showTeamPage } = this.state;
 
     const classNameFooter = `footer ${showTeamPage ? "hide" : ""}`;
-    console.log("classNameFooter", classNameFooter);
 
     return (
       <div className="App">
