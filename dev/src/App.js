@@ -46,11 +46,18 @@ class App extends Component {
     const { currentPage, showTeamPage } = this.state;
 
     const classNameFooter = `footer ${showTeamPage ? "hide" : ""}`;
+    const classNameArrow = `arrow-button ${currentPage === 0 ? "hide" : ""}`;
 
     return (
       <div className="App">
-        <div className="arrow-left arrow-button" onClick={() => this.prev()} />
-        <div className="arrow-right arrow-button" onClick={() => this.next()} />
+        <div
+          className={`arrow-left ${classNameArrow}`}
+          onClick={() => this.prev()}
+        />
+        <div
+          className={`arrow-right ${classNameArrow}`}
+          onClick={() => this.next()}
+        />
 
         <div className={classNameFooter}>
           <TextButton
