@@ -20,9 +20,12 @@ class Team extends Component {
 
   render() {
     const { selectedIndex } = this.state;
-    const { display } = this.props;
+    const { display, onClose } = this.props;
     const { title, intro, credits, members } = TeamData;
     const className = `TeamWrapper ${display ? "show" : ""}`;
+    const classNameTitle = `team_member-title ${
+      selectedIndex !== -1 ? "small" : ""
+    }`;
     const oCredit = { __html: credits };
     const oTitle = {
       __html: selectedIndex === -1 ? title : members[selectedIndex].name,
@@ -35,7 +38,7 @@ class Team extends Component {
       <div className={className}>
         <div className="team_conatiner-top">
           <div className="team_text-left team_text">
-            <p className="team_member-title" dangerouslySetInnerHTML={oTitle} />
+            <p className={classNameTitle} dangerouslySetInnerHTML={oTitle} />
             <p className="team_member-desc" dangerouslySetInnerHTML={oDesc} />
           </div>
           <div className="team_text-right team_text">
@@ -53,6 +56,7 @@ class Team extends Component {
         <div className="team_conatiner-bottom">
           <p dangerouslySetInnerHTML={oCredit} />
         </div>
+        <div className="team_close" onClick={onClose} />
       </div>
     );
   }

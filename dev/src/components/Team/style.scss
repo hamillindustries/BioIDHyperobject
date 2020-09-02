@@ -41,6 +41,10 @@ $padding: 150px;
 .team_member-title {
   font-size: 70px;
   margin-bottom: 30px;
+
+  &.small {
+    font-size: 50px;
+  }
 }
 .team_member-desc {
   font-size: 21px;
@@ -58,6 +62,12 @@ $padding: 150px;
   font-size: 21px;
   user-select: none;
   text-align: right;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .team_text-right {
@@ -86,4 +96,16 @@ $padding: 150px;
     font-weight: bold;
     text-decoration: none;
   }
+}
+
+$buttonSize: 50px;
+.team_close {
+  position: fixed;
+  top: 50px;
+  left: 150px;
+  width: $buttonSize;
+  height: $buttonSize;
+  background: url("../../images/cross.png");
+  background-size: cover;
+  cursor: pointer;
 }

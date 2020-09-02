@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import "./main.scss";
 
 // data
@@ -45,14 +44,16 @@ class App extends Component {
 
   render() {
     const { currentPage, showTeamPage } = this.state;
-    console.log("currentPage", currentPage);
+
+    const classNameFooter = `footer ${showTeamPage ? "hide" : ""}`;
+    console.log("classNameFooter", classNameFooter);
 
     return (
       <div className="App">
         <div className="arrow-left arrow-button" onClick={() => this.prev()} />
         <div className="arrow-right arrow-button" onClick={() => this.next()} />
 
-        <div className="footer">
+        <div className={classNameFooter}>
           <TextButton
             text={"Team"}
             visible={!showTeamPage}
@@ -67,7 +68,7 @@ class App extends Component {
           />
         </div>
 
-        <Team display={showTeamPage} />
+        <Team display={showTeamPage} onClose={() => this.toggleTeam()} />
         <Landing currentPage={currentPage} />
 
         <div className="ProjectsWrapper">
