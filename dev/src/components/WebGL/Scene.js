@@ -26,7 +26,8 @@ class Scene {
     this.orbitalControl = new alfrid.OrbitalControl(this.camera, window, 15);
     this.orbitalControl.rx.value = 0.3;
     this.orbitalControl.radius.value = 15;
-    this.orbitalControl.radius.limit(10, 15);
+    this.orbitalControl.radius.limit(12.5, 18);
+    this.orbitalControl.radius.easing = 0.025;
     this.orbitalControl.lockRotation(true);
 
     this.control = new alfrid.OrbitalControl(null, window, 0.01);
@@ -71,13 +72,6 @@ class Scene {
     if (mIndex < 1) {
       return;
     }
-    // const mSettings = Assets.get(`0${mIndex}`);
-    // for (let s in mSettings) {
-    //   if (s.indexOf("num") === -1) {
-    //     Config[s] = mSettings[s];
-    //   }
-    // }
-    // Settings.refresh();
     const oSetting = Settings[mIndex - 1];
     console.log("goto", mIndex);
     console.log("using texture", `Project_0${mIndex}`);
@@ -89,6 +83,8 @@ class Scene {
   }
 
   open() {
+    this.orbitalControl.radius.setTo(18);
+    this.orbitalControl.radius.value = 15;
     this.control.rx.setTo(0);
     this.control.ry.setTo(0);
     this._offset.speed = 0.005;
