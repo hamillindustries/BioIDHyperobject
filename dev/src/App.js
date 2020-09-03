@@ -15,8 +15,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentPage: 1,
-      showTeamPage: true,
+      currentPage: 0,
+      showTeamPage: false,
     };
 
     window.addEventListener("keydown", (e) => {
@@ -40,6 +40,11 @@ class App extends Component {
 
   toggleTeam() {
     this.setState({ showTeamPage: !this.state.showTeamPage });
+  }
+
+  selectProject(mIndex) {
+    console.log("selectProject", mIndex + 1);
+    this.setState({ currentPage: mIndex + 1 });
   }
 
   render() {
@@ -75,9 +80,8 @@ class App extends Component {
         </div>
 
         <Team display={showTeamPage} onClose={() => this.toggleTeam()} />
-        <Landing currentPage={currentPage} />
 
-        <div className="ProjectsWrapper">
+        <div>
           {ProjectPagesData.map(({ id, name, desc }, i) => (
             <ProjectPage
               key={i}
@@ -88,6 +92,10 @@ class App extends Component {
             />
           ))}
         </div>
+        <Landing
+          currentPage={currentPage}
+          onSelect={(i) => this.selectProject(i)}
+        />
         <WebGL currentPage={currentPage} />
       </div>
     );

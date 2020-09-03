@@ -11,6 +11,7 @@ class WebGL extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     if (this.props.currentPage !== nextProps.currentPage) {
+      console.log("show page :", nextProps.currentPage);
       this.scene.show(nextProps.currentPage);
     }
     return false;

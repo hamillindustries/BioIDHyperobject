@@ -3,7 +3,10 @@
   width: 100%;
   height: 100%;
   background: url("../../images/bg.jpg");
-  background-size: cover;
+  // background: url("../../images/bgGuide.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
 
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
@@ -12,5 +15,20 @@
   &.show {
     opacity: 1;
     pointer-events: auto;
+  }
+}
+
+.landing_project-link {
+  position: absolute;
+  width: 400px;
+  cursor: pointer;
+
+  p {
+    margin-left: -200px;
+    width: 100%;
+    text-align: center;
+    font-size: 32px;
+    letter-spacing: 2px;
+    user-select: none;
   }
 }

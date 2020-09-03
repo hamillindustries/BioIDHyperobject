@@ -70,6 +70,7 @@ class Scene {
 
   goto(mIndex) {
     if (mIndex < 1) {
+      this._index = mIndex;
       return;
     }
     const oSetting = Settings[mIndex - 1];
