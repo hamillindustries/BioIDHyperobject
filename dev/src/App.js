@@ -16,7 +16,7 @@ class App extends Component {
     super();
     this.state = {
       currentPage: 1,
-      showTeamPage: false,
+      showTeamPage: true,
     };
 
     window.addEventListener("keydown", (e) => {

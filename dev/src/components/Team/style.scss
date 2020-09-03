@@ -1,6 +1,7 @@
 .TeamWrapper {
   position: fixed;
   display: block;
+  overflow-y: scroll;
   width: 100%;
   height: 100%;
   z-index: 9;
@@ -18,18 +19,16 @@
 
 .team_conatiner-top {
   width: 100%;
-  height: 90%;
 }
 
 .team_text {
   float: left;
-
   width: 50%;
-  height: 100%;
 }
 
 $padding: 150px;
 .team_text-left {
+  height: 90vh;
   box-sizing: border-box;
   padding-left: $padding;
 
@@ -56,6 +55,7 @@ $padding: 150px;
 }
 .team_member-desc {
   font-size: 21px;
+  line-height: 28px;
   white-space: pre-wrap;
 
   opacity: 0;
@@ -87,21 +87,44 @@ $padding: 150px;
   }
 }
 
+.team_member-bio {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  white-space: pre-line;
+  margin: 20px 0px 40px 0px;
+  padding-left: 50px;
+  font-size: 19px;
+  line-height: 21px;
+
+  .expand & {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out 0.5s;
+  }
+
+  a {
+    color: inherit;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
 .team_text-right {
   // background-color: rgba(0, 255, 0, 0.25);
   box-sizing: border-box;
   padding-right: $padding;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding-top: 25vh;
+  margin-bottom: 100px;
 }
 
 .team_conatiner-bottom {
   font-size: 21px;
   display: block;
-  position: absolute;
-  bottom: 50px;
+  float: left;
+  // position: absolute;
+  // bottom: 50px;
+  margin-bottom: 50px;
   box-sizing: border-box;
   width: 100%;
   padding: 0px 50px 0px 50px;

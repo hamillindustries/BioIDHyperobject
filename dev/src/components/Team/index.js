@@ -17,15 +17,10 @@ class Team extends Component {
 
   _onMember(mIndex) {
     if (this.state.selectedIndex === mIndex) {
-      return;
+      this.setState({ selectedIndex: -1 });
+    } else {
+      this.setState({ selectedIndex: mIndex });
     }
-    this.setState({ selectedIndex: mIndex, startAnimation: false });
-
-    if (this._timeout !== undefined) {
-      window.clearTimeout(this._timeout);
-    }
-
-    this._timeout = setTimeout(() => this.playAnim(), 100);
   }
 
   componentDidMount() {
@@ -43,16 +38,7 @@ class Team extends Component {
     const { display, onClose } = this.props;
     const { title, intro, credits, members } = TeamData;
     const className = `TeamWrapper ${display ? "show" : ""}`;
-    const classNameTitle = `team_member-title ${
-      selectedIndex !== -1 ? "small" : ""
-    }`;
     const oCredit = { __html: credits };
-    const oTitle = {
-      __html: selectedIndex === -1 ? title : members[selectedIndex].name,
-    };
-    const oDesc = {
-      __html: selectedIndex === -1 ? intro : members[selectedIndex].desc,
-    };
 
     return (
       <div className={className}>
@@ -60,8 +46,8 @@ class Team extends Component {
           className={`team_conatiner-top ${startAnimation ? "showMember" : ""}`}
         >
           <div className="team_text-left team_text">
-            <p className={classNameTitle} dangerouslySetInnerHTML={oTitle} />
-            <p className="team_member-desc" dangerouslySetInnerHTML={oDesc} />
+            <p className="team_member-title">{title}</p>
+            <p className="team_member-desc">{intro}</p>
           </div>
           <div className="team_text-right team_text">
             {members.map((member, i) => {
@@ -69,6 +55,8 @@ class Team extends Component {
                 <Member
                   key={i}
                   name={member.name}
+                  desc={member.desc}
+                  expand={i === selectedIndex}
                   onClick={() => this._onMember(i)}
                 />
               );
