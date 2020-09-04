@@ -3,6 +3,7 @@ import "./style.scss";
 
 // data
 import Projects from "../../data/projectData.json";
+import videoSrc from "../../video/intro.mp4";
 
 class Landing extends Component {
   constructor(props) {
@@ -12,12 +13,19 @@ class Landing extends Component {
       firstTime: true,
       width: window.innerWidth,
       height: window.innerHeight,
+      videoPlaying: true,
     };
+
+    this._refVideo = React.createRef();
   }
 
   componentDidMount() {
     this._resizeBind = () => this.resize();
     window.addEventListener("resize", this._resizeBind);
+
+    this._refVideo.current.addEventListener("ended", () => {
+      this.setState({ videoPlaying: false, firstTime: false });
+    });
   }
 
   componentWillUnmount() {
@@ -31,13 +39,18 @@ class Landing extends Component {
   render() {
     const { currentPage, onSelect } = this.props;
     const className = `landing ${currentPage === 0 ? "show" : ""}`;
-    const { width, height } = this.state;
+    const { width, height, firstTime, videoPlaying } = this.state;
     const sx = width / 1920;
     const sy = height / 1080;
     const scale = Math.min(sx, sy);
 
+    const showVideo = firstTime && videoPlaying;
+
     return (
       <div className={className}>
+        <div className={`landing-intro_video ${showVideo ? "" : "hide"}`}>
+          <video autoPlay muted src={videoSrc} ref={this._refVideo} />
+        </div>
         {Projects.map((project, i) => {
           const t = project.position.split(",").map((v) => parseFloat(v));
           return (
