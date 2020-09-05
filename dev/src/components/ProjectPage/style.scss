@@ -46,12 +46,107 @@ $padding: 150px;
 .RightContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   text-align: right;
-  padding-right: $padding;
+  padding-right: $padding + 50px;
+  flex-direction: column;
 }
 
 .RightContainer p {
   line-height: 26px;
-  padding-right: 50px;
+  margin-bottom: 20px;
+  // padding-right: 50px;
+}
+
+$buttonSize: 70px;
+.project_play-button {
+  width: $buttonSize;
+  height: $buttonSize;
+  background: url("../../images/play.png");
+  background-size: cover;
+  cursor: pointer;
+
+  opacity: 0.5;
+
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1, 1.1);
+    opacity: 1;
+  }
+}
+
+// Slides
+.project-slides {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+
+  transition: opacity 0.5s ease-in-out;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+.project-slides_wrapper {
+  position: relative;
+  width: 60%;
+  border: 1px solid #fef8e8;
+  background: black;
+}
+
+$listHeight: 20px;
+.sildes-list_container {
+  width: 100%;
+  height: $listHeight;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.slides-media {
+  outline: none;
+}
+
+.slides-list_dots {
+  width: $listHeight/2;
+  height: $listHeight/2;
+  border: solid 1px #fef8e8;
+
+  border-radius: $listHeight/2;
+  margin-right: 5px;
+  cursor: pointer;
+
+  transition: background-color 0.5s ease-in-out;
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  &.selected {
+    background-color: #fef8e8;
+  }
+}
+
+$buttonSize: 30px;
+.project-slides_close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: $buttonSize;
+  height: $buttonSize;
+  background: url("../../images/cross.png");
+  background-size: cover;
+  cursor: pointer;
 }

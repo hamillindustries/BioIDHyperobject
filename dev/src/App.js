@@ -15,7 +15,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentPage: 0,
+      currentPage: 1,
       showTeamPage: false,
     };
 
@@ -43,7 +43,6 @@ class App extends Component {
   }
 
   selectProject(mIndex) {
-    console.log("selectProject", mIndex + 1);
     this.setState({ currentPage: mIndex + 1 });
   }
 
@@ -52,6 +51,8 @@ class App extends Component {
 
     const classNameFooter = `footer ${showTeamPage ? "hide" : ""}`;
     const classNameArrow = `arrow-button ${currentPage === 0 ? "hide" : ""}`;
+
+    const { id, name, desc } = ProjectPagesData[currentPage - 1];
 
     return (
       <div className="App">
@@ -82,15 +83,7 @@ class App extends Component {
         <Team display={showTeamPage} onClose={() => this.toggleTeam()} />
 
         <div>
-          {ProjectPagesData.map(({ id, name, desc }, i) => (
-            <ProjectPage
-              key={i}
-              id={id}
-              name={name}
-              desc={desc}
-              selected={currentPage === i + 1}
-            />
-          ))}
+          <ProjectPage id={id} name={name} desc={desc} selected={true} />
         </div>
         <Landing
           currentPage={currentPage}

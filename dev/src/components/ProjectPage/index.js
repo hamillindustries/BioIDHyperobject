@@ -1,9 +1,22 @@
 import React, { Component } from "react";
+import Slides from "./Slides";
+
+import SlidesData from "../../data/files.json";
+
 import "./style.scss";
 
 class ProjectPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showDetail: true,
+    };
+  }
+
   render() {
-    const { name, selected, desc } = this.props;
+    const { id, name, selected, desc } = this.props;
+    const { showDetail } = this.state;
     const className = selected ? "ProjectWrapper show" : "ProjectWrapper";
     return (
       <div className={className}>
@@ -12,7 +25,23 @@ class ProjectPage extends Component {
         </div>
         <div className="RightContainer TextContainer">
           <p>{desc}</p>
+          <div
+            className="project_play-button"
+            onClick={() => {
+              console.log("show detail");
+              this.setState({ showDetail: true });
+            }}
+          />
         </div>
+        <Slides
+          id={id}
+          files={SlidesData[id - 1]}
+          show={showDetail}
+          onClose={() => {
+            console.log("close detail");
+            this.setState({ showDetail: false });
+          }}
+        />
       </div>
     );
   }
