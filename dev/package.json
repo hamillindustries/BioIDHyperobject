@@ -1,7 +1,7 @@
 {
   "name": "bioid",
   "version": "0.1.0",
-  "homepage": "./", 
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@material/icon-button": "^7.0.0",
@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "files": "node ./tasks/generateFileList.js"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "fs-extra": "^9.0.1",
+    "glob": "^7.1.6"
   }
 }
