@@ -5,6 +5,8 @@ class Slides extends Component {
   constructor(props) {
     super(props);
 
+    this.ref = React.createRef();
+
     this.state = {
       selected: 0,
     };
@@ -12,6 +14,13 @@ class Slides extends Component {
 
   select(mIndex) {
     this.setState({ selected: mIndex });
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.show && !this.props.show) {
+      this.ref.current.src = "";
+      this.setState({ selected: 0 });
+    }
   }
 
   render() {
@@ -28,9 +37,20 @@ class Slides extends Component {
         <div className="project-slides_wrapper">
           <div className="sildes-media_container">
             {ext === "jpg" ? (
-              <img src={src} width="100%" className="slides-media" />
+              <img
+                ref={this.ref}
+                src={src}
+                width="100%"
+                className="slides-media"
+              />
             ) : (
-              <video src={src} width="100%" controls className="slides-media" />
+              <video
+                ref={this.ref}
+                src={src}
+                width="100%"
+                controls
+                className="slides-media"
+              />
             )}
           </div>
           <div className="sildes-list_container">
