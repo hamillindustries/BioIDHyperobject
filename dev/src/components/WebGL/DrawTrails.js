@@ -59,7 +59,7 @@ class DrawTrails extends alfrid.Draw {
     }
     mesh.bufferInstance(posOffsets, "aPosOffset");
 
-    this.setMesh(mesh).useProgram(vs, fs).uniform("uRadius", "float", 0.01);
+    this.setMesh(mesh).useProgram(vs, fs).uniform("uRadius", "float", 0.015);
   }
 }
 

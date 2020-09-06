@@ -13,7 +13,7 @@ varying float vDebug;
 uniform float uOffset;
 uniform sampler2D texture;
 
-#define LIGHT vec3(1.0)
+#define LIGHT vec3(1.0, 0.2, -1.0)
 ${diffuse}
 
 
@@ -31,7 +31,7 @@ float map(float v, float a, float b, float c, float d) {
 }
 
 void main(void) {
-    float d = diffuse(vNormal, LIGHT, .35);
+    float d = diffuse(vNormal, LIGHT, .5);
 
     vec2 uv = vec2(vExtra.z, 0.5);
     vec3 color = texture2D(texture, uv).rgb;

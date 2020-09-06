@@ -32,6 +32,8 @@ class Scene {
 
     this.control = new alfrid.OrbitalControl(null, window, 0.01);
     this.control.lockZoom(true);
+    const r = 0.5;
+    this.control.rx.limit(-r, r);
 
     // states
     this._index = 0;

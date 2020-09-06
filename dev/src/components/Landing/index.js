@@ -13,7 +13,7 @@ class Landing extends Component {
       firstTime: true,
       width: window.innerWidth,
       height: window.innerHeight,
-      videoPlaying: false,
+      videoPlaying: true,
     };
 
     this._refVideo = React.createRef();

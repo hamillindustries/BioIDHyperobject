@@ -11,6 +11,7 @@ attribute vec4 aPosOffset;
 uniform mat4 uModelMatrix;
 uniform mat4 uViewMatrix;
 uniform mat4 uProjectionMatrix;
+uniform mat3 uNormalMatrix;
 uniform float uRadius;
 uniform float uSetPercent;
 uniform float uNumSets;
@@ -119,7 +120,7 @@ void main(void) {
 
     vec3 n = vec3(0.0, 1.0, 0.0);
     n.yz = rotate(n.yz, -a);
-    vNormal = n;
+    vNormal = uNormalMatrix * n;
     vNormalOrg = aNormal;
     vExtra = aPosOffset;
     vPosition = wsPos.xyz;

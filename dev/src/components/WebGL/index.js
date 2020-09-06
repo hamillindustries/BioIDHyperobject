@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Scene from "./Scene";
-import "./style.css";
+import "./style.scss";
 
 class WebGL extends Component {
   constructor(props) {
@@ -22,6 +22,7 @@ class WebGL extends Component {
     const { currentPage } = this.props;
     this.scene = new Scene();
     ref.current.appendChild(this.scene.canvas);
+    this.resize();
 
     if (currentPage > 0) {
       this.scene.show(currentPage);
@@ -31,7 +32,8 @@ class WebGL extends Component {
   }
 
   resize() {
-    this.scene.resize(window.innerWidth, window.innerHeight);
+    const ratio = 1.5;
+    this.scene.resize(window.innerWidth * ratio, window.innerHeight * ratio);
   }
 
   render() {
