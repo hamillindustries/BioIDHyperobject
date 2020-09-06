@@ -1,9 +1,9 @@
 export default {
   title: "Team Members",
   intro:
-    "Our urban habitat today is being fundamentally influenced by revolutions in biotechnology, computation and our exposure to the long-lasting effects of climate change. Bio-Integrated Design takes these life-changing phenomena as the foundation to explore radical, sophisticated, yet also critical, design solutions that will shape our future society. Nature plays a central role in the programme, beyond that of a model or inspiration, it is the medium of a new multi-layered design approach that is biologically, materially and socially integrated. ",
+    'Bio-Integrated Design is taught jointly by UCL\'s <a target="_blank" href="https://www.ucl.ac.uk/bartlett/architecture/about-us">The Bartlett School of Architecture</a> and <a target="_blank" href="https://www.ucl.ac.uk/biochemical-engineering/">Biochemical Engineering Department</a>, by bringing together a spectrum of multi-disciplinary academics, practitioners and students, combining design experimentation with scientific methods, seeking new modes of simulation and production, and exploring how advances in the fields of synthetic biology, material science and digital fabrication are changing future design practices. ',
   credits:
-    'The visuals on this site have been created using real data from BioID researches to generate artistic generative models.\nThe project is a creation <a target="_blank" href="https://hamillindustries.com/">Hamill Industries</a> creative studio, in collaboration with <a target="_blank" href="https://guardabrazo.com/">Federico Guardabrazo</a> and <a target="_blank" href="http://wensday.co/">Lin Yi-Wen</a>. ',
+    'The visuals on this site have been created using real data from BioID researches to generate artistic generative models.\nThe project is a creation of <a target="_blank" href="https://hamillindustries.com/">Hamill Industries</a> creative studio, in collaboration with <a target="_blank" href="https://guardabrazo.com/">Federico Guardabrazo</a> and <a target="_blank" href="http://wensday.co/">Lin Yi-Wen</a>. ',
   members: [
     {
       name: "<b>Professor Marcos Cruz</b>, Programme Director",

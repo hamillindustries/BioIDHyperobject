@@ -37,10 +37,10 @@ void main(void) {
     vec3 color = texture2D(texture, uv).rgb;
 
     float r = 3.5;
-    float z = map(vPosition.z + 2.0, -r, r, 0.0, 1.0);
+    float z = map(vPosition.z + 3.0, -r, r, 0.0, 1.0);
     z = pow(z, 1.5);
 
-    float br = mix(0.7, 1.25, vExtra.w);
+    float br = mix(0.7, 1.25, vExtra.w) + 0.2;
     color *= d * z * br;
 
     gl_FragColor = vec4(color, 1.0);

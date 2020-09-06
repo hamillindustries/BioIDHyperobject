@@ -38,6 +38,7 @@ class Team extends Component {
     const { display, onClose } = this.props;
     const { title, intro, credits, members } = TeamData;
     const className = `TeamWrapper ${display ? "show" : ""}`;
+    const oIntro = { __html: intro };
     const oCredit = { __html: credits };
 
     return (
@@ -47,7 +48,7 @@ class Team extends Component {
         >
           <div className="team_text-left team_text">
             <p className="team_member-title">{title}</p>
-            <p className="team_member-desc">{intro}</p>
+            <p className="team_member-desc" dangerouslySetInnerHTML={oIntro} />
           </div>
           <div className="team_text-right team_text">
             {members.map((member, i) => {

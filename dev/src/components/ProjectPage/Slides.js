@@ -18,20 +18,30 @@ class Slides extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.show && !this.props.show) {
-      this.ref.current.src = "";
       this.setState({ selected: 0 });
+
+      if (this.ref.current.pause) {
+        this.ref.current.currentTime = 0;
+        this.ref.current.pause();
+      }
     }
   }
 
   render() {
-    const { id, show, files, onClose } = this.props;
+    const { id, show, close, files, onClose } = this.props;
     const { selected } = this.state;
     const path = files[selected];
     const ext = path.split(".")[1];
 
+    let alt = path.split(".")[0];
+    alt = alt.split("_")[1];
+
     const src = `${process.env.PUBLIC_URL}/images/projects/0${id}/${path}`;
 
-    const className = show ? "project-slides show" : "project-slides";
+    let className = show ? "project-slides show" : "project-slides";
+    if (close) {
+      className += " close";
+    }
     return (
       <div className={className}>
         <div className="project-slides_wrapper">
@@ -40,6 +50,7 @@ class Slides extends Component {
               <img
                 ref={this.ref}
                 src={src}
+                alt={alt}
                 width="100%"
                 className="slides-media"
               />

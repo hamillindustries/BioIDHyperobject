@@ -1,3 +1,5 @@
+@import "../../styles/font-size.scss";
+
 .TeamWrapper {
   position: fixed;
   display: block;
@@ -38,14 +40,12 @@ $padding: 150px;
 }
 
 .team_member-title {
-  font-size: 70px;
+  font-size: $fontSizeLarge;
+  line-height: $lineHeightLarge;
+  font-weight: 500;
   margin-bottom: 30px;
   opacity: 0;
   transform: translate(0, -10px);
-
-  &.small {
-    font-size: 50px;
-  }
 
   .showMember & {
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-out;
@@ -54,8 +54,8 @@ $padding: 150px;
   }
 }
 .team_member-desc {
-  font-size: 21px;
-  line-height: 28px;
+  font-size: $fontSizeMedium;
+  line-height: $lineHeightMedium;
   white-space: pre-wrap;
 
   opacity: 0;
@@ -69,18 +69,20 @@ $padding: 150px;
 
   a {
     color: inherit;
-    font-weight: bold;
-    text-decoration: none;
   }
 }
 
 .team_member-link {
   box-sizing: border-box;
-  font-size: 21px;
+  font-size: $fontSizeMedium;
   user-select: none;
   text-align: right;
   margin-bottom: 20px;
   cursor: pointer;
+
+  b {
+    font-weight: 600;
+  }
 
   &:last-child {
     margin-bottom: 0;
@@ -94,8 +96,8 @@ $padding: 150px;
   white-space: pre-line;
   margin: 20px 0px 40px 0px;
   padding-left: 50px;
-  font-size: 19px;
-  line-height: 21px;
+  font-size: $fontSizeMedium;
+  line-height: $lineHeightMedium;
 
   .expand & {
     display: block;
@@ -105,8 +107,6 @@ $padding: 150px;
 
   a {
     color: inherit;
-    font-weight: bold;
-    text-decoration: none;
   }
 }
 
@@ -119,7 +119,8 @@ $padding: 150px;
 }
 
 .team_conatiner-bottom {
-  font-size: 21px;
+  font-size: $fontSizeMedium;
+  line-height: $lineHeightMedium;
   display: block;
   float: left;
   // position: absolute;
@@ -133,7 +134,7 @@ $padding: 150px;
 
   a {
     color: inherit;
-    font-weight: bold;
+    font-weight: 600;
     text-decoration: none;
   }
 }

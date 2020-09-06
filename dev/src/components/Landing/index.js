@@ -25,6 +25,7 @@ class Landing extends Component {
 
     this._refVideo.current.addEventListener("ended", () => {
       this.setState({ videoPlaying: false, firstTime: false });
+      this.props.onVideoEnd();
     });
   }
 

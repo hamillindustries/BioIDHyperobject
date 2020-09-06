@@ -23,7 +23,7 @@ export default [
     id: 3,
     name: "Bioremediation",
     desc: `Biohybrid scaffolds are explored, with varying combinations of existing materials such as textiles and ceramics to host biofilms such as P.purpureum, that have the ability to uptake contaminants such as microplastics from polluted water via bioaccumulation. These are further designed computationally into 3D porous structures allowing us to introduce the scaffolds within the existing urban context. `,
-    position: "-25, -8.5",
+    position: "-27, -8.5",
   },
   {
     id: 4,

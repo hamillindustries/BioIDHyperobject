@@ -120,6 +120,7 @@ void main(void) {
 
     vec3 n = vec3(0.0, 1.0, 0.0);
     n.yz = rotate(n.yz, -a);
+    n = align(n, dir);
     vNormal = uNormalMatrix * n;
     vNormalOrg = aNormal;
     vExtra = aPosOffset;

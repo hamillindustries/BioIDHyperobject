@@ -11,12 +11,22 @@ class ProjectPage extends Component {
 
     this.state = {
       showDetail: false,
+      closeDetail: false,
     };
+  }
+
+  closeDetails() {
+    this.setState({ closeDetail: true });
+    setTimeout(() => {
+      console.log("close detail");
+      this.setState({ showDetail: false, closeDetail: false });
+    }, 500);
   }
 
   render() {
     const { id, name, selected, desc } = this.props;
-    const { showDetail } = this.state;
+    const { showDetail, closeDetail } = this.state;
+
     const className = selected ? "ProjectWrapper show" : "ProjectWrapper";
     return (
       <div className={className}>
@@ -32,14 +42,15 @@ class ProjectPage extends Component {
             }}
           />
         </div>
-        <Slides
-          id={id}
-          files={SlidesData[id - 1]}
-          show={showDetail}
-          onClose={() => {
-            this.setState({ showDetail: false });
-          }}
-        />
+        {id > -1 && (
+          <Slides
+            id={id}
+            files={SlidesData[id - 1]}
+            show={showDetail}
+            close={closeDetail}
+            onClose={() => this.closeDetails()}
+          />
+        )}
       </div>
     );
   }
