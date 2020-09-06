@@ -15,7 +15,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentPage: 2,
+      currentPage: 1,
       showTeamPage: false,
     };
 
@@ -52,7 +52,13 @@ class App extends Component {
     const classNameFooter = `footer ${showTeamPage ? "hide" : ""}`;
     const classNameArrow = `arrow-button ${currentPage === 0 ? "hide" : ""}`;
 
-    const { id, name, desc } = ProjectPagesData[currentPage - 1];
+    let id, name, desc;
+    if (currentPage >= 1) {
+      const o = ProjectPagesData[currentPage - 1];
+      id = o.id;
+      name = o.name;
+      desc = o.desc;
+    }
 
     return (
       <div className="App">
@@ -83,7 +89,9 @@ class App extends Component {
         <Team display={showTeamPage} onClose={() => this.toggleTeam()} />
 
         <div>
-          <ProjectPage id={id} name={name} desc={desc} selected={true} />
+          {currentPage > 0 && (
+            <ProjectPage id={id} name={name} desc={desc} selected={true} />
+          )}
         </div>
         <Landing
           currentPage={currentPage}
