@@ -10,7 +10,7 @@ class ProjectPage extends Component {
     super(props);
 
     this.state = {
-      showDetail: true,
+      showDetail: false,
     };
   }
 
@@ -28,7 +28,6 @@ class ProjectPage extends Component {
           <div
             className="project_play-button"
             onClick={() => {
-              console.log("show detail");
               this.setState({ showDetail: true });
             }}
           />
@@ -38,7 +37,6 @@ class ProjectPage extends Component {
           files={SlidesData[id - 1]}
           show={showDetail}
           onClose={() => {
-            console.log("close detail");
             this.setState({ showDetail: false });
           }}
         />

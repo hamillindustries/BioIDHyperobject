@@ -23,7 +23,6 @@ class Slides extends Component {
     const src = `${process.env.PUBLIC_URL}/images/projects/0${id}/${path}`;
 
     const className = show ? "project-slides show" : "project-slides";
-    console.log("class name :", className);
     return (
       <div className={className}>
         <div className="project-slides_wrapper">
@@ -31,14 +30,7 @@ class Slides extends Component {
             {ext === "jpg" ? (
               <img src={src} width="100%" className="slides-media" />
             ) : (
-              <video
-                src={src}
-                width="100%"
-                // autoPlay
-                // muted
-                controls
-                className="slides-media"
-              />
+              <video src={src} width="100%" controls className="slides-media" />
             )}
           </div>
           <div className="sildes-list_container">

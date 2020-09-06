@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./style.scss";
 
 // data
-import Projects from "../../data/projectData.json";
+import Projects from "../../data/projectData.js";
 import videoSrc from "../../video/intro.mp4";
 
 class Landing extends Component {

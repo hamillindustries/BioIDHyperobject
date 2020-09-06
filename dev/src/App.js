@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./main.scss";
 
 // data
-import ProjectPagesData from "./data/projectData.json";
+import ProjectPagesData from "./data/projectData.js";
 
 // components
 import Landing from "./components/Landing";
@@ -15,7 +15,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      currentPage: 1,
+      currentPage: 2,
       showTeamPage: false,
     };
 
