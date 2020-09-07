@@ -60,6 +60,8 @@ class Slides extends Component {
                 src={src}
                 width="100%"
                 controls
+                autoPlay
+                muted
                 className="slides-media"
               />
             )}
