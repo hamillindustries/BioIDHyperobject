@@ -79,6 +79,10 @@ class App extends Component {
     this.setState({ showFooter: true });
   }
 
+  lockArrows(mValue) {
+    this.setState({ locked: mValue });
+  }
+
   render() {
     const {
       currentPage,
@@ -142,6 +146,7 @@ class App extends Component {
           name={name || ""}
           desc={desc || ""}
           selected={id === undefined ? false : id === currentPage}
+          lockArrows={(mValue) => this.lockArrows(mValue)}
         />
       );
     });

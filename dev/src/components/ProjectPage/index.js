@@ -19,11 +19,12 @@ class ProjectPage extends Component {
     this.setState({ closeDetail: true });
     setTimeout(() => {
       this.setState({ showDetail: false, closeDetail: false });
+      this.props.lockArrows(false);
     }, 500);
   }
 
   render() {
-    const { id, name, selected, desc } = this.props;
+    const { id, name, selected, desc, lockArrows } = this.props;
     const { showDetail, closeDetail } = this.state;
 
     const className = selected ? "ProjectWrapper show" : "ProjectWrapper";
@@ -38,6 +39,7 @@ class ProjectPage extends Component {
             className="project_play-button"
             onClick={() => {
               this.setState({ showDetail: true });
+              lockArrows(true);
             }}
           />
         </div>
