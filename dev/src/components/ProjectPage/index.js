@@ -18,7 +18,6 @@ class ProjectPage extends Component {
   closeDetails() {
     this.setState({ closeDetail: true });
     setTimeout(() => {
-      console.log("close detail");
       this.setState({ showDetail: false, closeDetail: false });
     }, 500);
   }

@@ -4,7 +4,6 @@ import AssetsLoader from "assets-loader";
 
 const loadAssets = () =>
   new Promise((resolve, reject) => {
-    console.log("Load Assets");
     if (assets.length > 0) {
       document.body.classList.add("isLoading");
 
@@ -30,7 +29,6 @@ const loadAssets = () =>
 
 const initAssets = (mAssets) =>
   new Promise((resolve, reject) => {
-    console.log("Init Assets", mAssets);
     // INIT ASSETS
     Assets.init(mAssets);
 

@@ -38,11 +38,6 @@ Assets.init = function (mAssets) {
         };
     }
   });
-
-  if (_assets.length > 0) {
-    console.debug("ASSETS:");
-    console.table(_assets);
-  }
 };
 
 Assets.get = function (mId) {
