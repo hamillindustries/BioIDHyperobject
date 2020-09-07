@@ -22,8 +22,10 @@ export default [
   {
     id: 3,
     name: "Bioremediation",
-    desc: `Biohybrid scaffolds are explored, with varying combinations of existing materials such as textiles and ceramics to host biofilms such as P.purpureum, that have the ability to uptake contaminants such as microplastics from polluted water via bioaccumulation. These are further designed computationally into 3D porous structures allowing us to introduce the scaffolds within the existing urban context. `,
-    position: "-27, -8.5",
+    desc: `Identifying distinct ecological niches as disruptive opportunities within which biological processes can be initiated is a key research element at Bio-ID. For instance, tapping into the ability of specific living organisms, such as microalgae, bacteria and fungi to perform bioremediation as a by-product of their biosynthetic or metabolic activity within the architectural living scaffolds.
+
+    Biohybrid scaffolds are explored, with varying combinations of existing materials such as textiles and ceramics to host biofilms such as P.purpureum, that have the ability to uptake contaminants such as microplastics from polluted water via bioaccumulation. These are further designed computationally into 3D porous structures allowing us to introduce the scaffolds within the existing urban context. `,
+    position: "-32, -8.5",
   },
   {
     id: 4,

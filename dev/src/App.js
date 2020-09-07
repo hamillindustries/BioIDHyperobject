@@ -134,16 +134,16 @@ class App extends Component {
 
         <div className={classNameFooter}>
           <TextButton
-            text={"Team"}
-            visible={!showTeamPage}
-            onClick={() => this.toggleTeam()}
-          />
-          <TextButton
             text={"Main"}
             visible={currentPage !== 0}
             onClick={() => {
               this.setState({ currentPage: 0, showTeamPage: false });
             }}
+          />
+          <TextButton
+            text={"Team"}
+            visible={!showTeamPage}
+            onClick={() => this.toggleTeam()}
           />
         </div>
 

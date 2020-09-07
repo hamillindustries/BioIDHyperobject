@@ -22,6 +22,7 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  background-color: black;
 
   opacity: 0;
   transition: opacity 0.25s ease-out;
@@ -41,22 +42,22 @@
   transform-origin: top left;
 
   &:nth-child(6n) {
-    transition: opacity 0.65s ease-in-out 0.3s, transform 0.65s ease-in-out 0.3s;
+    transition: opacity 1.65s ease-in-out 0.3s, transform 1.65s ease-in-out 0.3s;
   }
   &:nth-child(6n + 1) {
-    transition: opacity 0.45s ease-in-out 0.1s, transform 0.45s ease-in-out 0.1s;
+    transition: opacity 1.45s ease-in-out 0.1s, transform 1.45s ease-in-out 0.1s;
   }
   &:nth-child(6n + 2) {
-    transition: opacity 0.65s ease-in-out 0.6s, transform 0.65s ease-in-out 0.6s;
+    transition: opacity 1.65s ease-in-out 0.6s, transform 1.65s ease-in-out 0.6s;
   }
   &:nth-child(6n + 3) {
-    transition: opacity 0.45s ease-in-out 0.4s, transform 0.45s ease-in-out 0.4s;
+    transition: opacity 1.45s ease-in-out 0.4s, transform 1.45s ease-in-out 0.4s;
   }
   &:nth-child(6n + 4) {
-    transition: opacity 0.55s ease-in-out 0.5s, transform 0.55s ease-in-out 0.5s;
+    transition: opacity 1.55s ease-in-out 0.5s, transform 1.55s ease-in-out 0.5s;
   }
   &:nth-child(6n + 5) {
-    transition: opacity 0.5s ease-in-out 0.3s, transform 0.5s ease-in-out 0.3s;
+    transition: opacity 1.5s ease-in-out 0.3s, transform 1.5s ease-in-out 0.3s;
   }
 
   .link & {

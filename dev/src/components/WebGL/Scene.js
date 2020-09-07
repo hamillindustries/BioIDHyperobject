@@ -26,12 +26,13 @@ class Scene {
     this.orbitalControl = new alfrid.OrbitalControl(this.camera, window, 15);
     this.orbitalControl.rx.value = 0.3;
     this.orbitalControl.radius.value = 15;
-    this.orbitalControl.radius.limit(12.5, 18);
+    this.orbitalControl.radius.limit(10, 20);
     this.orbitalControl.radius.easing = 0.025;
     this.orbitalControl.lockRotation(true);
 
     this.control = new alfrid.OrbitalControl(null, window, 0.01);
     this.control.lockZoom(true);
+    this.control.rx.easing = this.control.ry.easing = 0.05;
     const r = 0.5;
     this.control.rx.limit(-r, r);
 
