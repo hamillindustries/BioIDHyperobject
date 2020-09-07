@@ -1,5 +1,7 @@
 @import "../../styles/font-size.scss";
 
+$buttonSize: 50px;
+
 .TeamWrapper {
   position: fixed;
   display: block;
@@ -21,6 +23,7 @@
 
 .team_conatiner-top {
   width: 100%;
+  margin-top: -$buttonSize * 2;
 }
 
 .team_text {
@@ -139,11 +142,17 @@ $padding: 150px;
   }
 }
 
-$buttonSize: 50px;
+.team_container-header {
+  width: 100%;
+  height: $buttonSize;
+  margin-top: 40px;
+  padding-left: 150px;
+}
+
 .team_close {
-  position: fixed;
-  top: 50px;
-  left: 150px;
+  // position: fixed;
+  // top: 50px;
+  // left: 150px;
   width: $buttonSize;
   height: $buttonSize;
   background: url("../../images/cross.png");

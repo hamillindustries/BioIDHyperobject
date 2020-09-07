@@ -43,6 +43,9 @@ class Team extends Component {
 
     return (
       <div className={className}>
+        <div className="team_container-header">
+          <div className="team_close" onClick={onClose} />
+        </div>
         <div
           className={`team_conatiner-top ${startAnimation ? "showMember" : ""}`}
         >
@@ -67,7 +70,6 @@ class Team extends Component {
         <div className="team_conatiner-bottom">
           <p dangerouslySetInnerHTML={oCredit} />
         </div>
-        <div className="team_close" onClick={onClose} />
       </div>
     );
   }

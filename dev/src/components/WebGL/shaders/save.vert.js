@@ -10,6 +10,8 @@ varying vec3 vExtra;
 void main(void) {
     gl_Position = vec4(aTextureCoord, 0.0, 1.0);
     vColor = aVertexPosition;
-    vExtra = aNormal;;
+    vExtra = aNormal;
+
+    gl_PointSize = 1.0;
 }
 `;
