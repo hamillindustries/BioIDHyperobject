@@ -24,7 +24,7 @@ class Scene {
     this.camera = new alfrid.CameraPerspective();
     this.camera.setPerspective((45 * Math.PI) / 180, GL.aspectRatio, 1, 30);
     this.orbitalControl = new alfrid.OrbitalControl(this.camera, window, 15);
-    this.orbitalControl.rx.value = 0.3;
+    // this.orbitalControl.rx.value = 0.3;
     this.orbitalControl.radius.value = 15;
     this.orbitalControl.radius.limit(10, 20);
     this.orbitalControl.radius.easing = 0.025;
@@ -46,6 +46,14 @@ class Scene {
 
     this._offset = new alfrid.TweenNumber(1, "linear", 0.005);
     // this._offset = new alfrid.EaseNumber(1, 0.005);
+
+    window.addEventListener("mousemove", (e) => {
+      const range = 0.2;
+      const rx = e.clientY / window.innerHeight - 0.5;
+      const ry = e.clientX / window.innerWidth - 0.5;
+      this.orbitalControl.ry.value = ry * range;
+      this.orbitalControl.rx.value = rx * range;
+    });
 
     preload().then(
       () => this._init(),

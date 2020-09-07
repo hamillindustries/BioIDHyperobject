@@ -20,25 +20,46 @@ class App extends Component {
       showTeamPage: false,
       showFooter: false,
       pageToggle: 0,
+      locked: false,
     };
   }
 
   prev() {
-    const { currentPage, pageToggle } = this.state;
+    const { currentPage, pageToggle, locked } = this.state;
+    if (locked) {
+      return;
+    }
     this.setState({
       currentPage: currentPage === 0 ? 6 : currentPage - 1,
       previousPage: currentPage,
       pageToggle: 1 - pageToggle,
+      locked: true,
     });
+    // unlock
+    setTimeout(() => {
+      this.setState({
+        locked: false,
+      });
+    }, 1000);
   }
 
   next() {
-    const { currentPage, pageToggle } = this.state;
+    const { currentPage, pageToggle, locked } = this.state;
+    if (locked) {
+      return;
+    }
     this.setState({
       currentPage: currentPage === 6 ? 0 : currentPage + 1,
       previousPage: currentPage,
       pageToggle: 1 - pageToggle,
+      locked: true,
     });
+    // unlock
+    setTimeout(() => {
+      this.setState({
+        locked: false,
+      });
+    }, 1000);
   }
 
   toggleTeam() {
@@ -65,13 +86,17 @@ class App extends Component {
       pageToggle,
       showTeamPage,
       showFooter,
+      locked,
     } = this.state;
 
     let classNameFooter = `footer ${showTeamPage ? "hide" : ""}`;
     if (!showFooter) {
       classNameFooter = "footer hide";
     }
-    const classNameArrow = `arrow-button ${currentPage === 0 ? "hide" : ""}`;
+    let classNameArrow = `arrow-button ${currentPage === 0 ? "hide" : ""}`;
+    if (locked) {
+      classNameArrow += " locked";
+    }
 
     const ary = [];
 
