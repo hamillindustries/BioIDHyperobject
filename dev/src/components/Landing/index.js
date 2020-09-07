@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import alfrid from "alfrid";
 import "./style.scss";
 
 // data
@@ -14,9 +15,27 @@ class Landing extends Component {
       width: window.innerWidth,
       height: window.innerHeight,
       videoPlaying: true,
+      showBackground: false,
     };
 
     this._refVideo = React.createRef();
+
+    this._efIndex = alfrid.Scheduler.addEF(() => this._closeCheck());
+  }
+
+  _closeCheck() {
+    if (isNaN(this._refVideo.current.duration)) {
+      return;
+    }
+
+    const threshold = 0.5;
+    const { currentTime, duration } = this._refVideo.current;
+
+    if (duration - currentTime < threshold && !this.state.showBackground) {
+      this.setState({ showBackground: true });
+
+      alfrid.Scheduler.removeEF(this._efIndex);
+    }
   }
 
   componentDidMount() {
@@ -39,8 +58,18 @@ class Landing extends Component {
 
   render() {
     const { currentPage, onSelect } = this.props;
-    const className = `landing ${currentPage === 0 ? "show" : ""}`;
-    const { width, height, firstTime, videoPlaying } = this.state;
+    const {
+      width,
+      height,
+      firstTime,
+      videoPlaying,
+      showBackground,
+    } = this.state;
+    let className = `landing ${currentPage === 0 ? "show" : ""}`;
+    if (showBackground) {
+      className += " link";
+    }
+
     const sx = width / 1920;
     const sy = height / 1080;
     const scale = Math.min(sx, sy);
@@ -52,6 +81,7 @@ class Landing extends Component {
         <div className={`landing-intro_video ${showVideo ? "" : "hide"}`}>
           <video autoPlay muted src={videoSrc} ref={this._refVideo} />
         </div>
+        <div className={`landing-background ${showBackground ? "show" : ""}`} />
         {Projects.map((project, i) => {
           const t = project.position.split(",").map((v) => parseFloat(v));
           return (

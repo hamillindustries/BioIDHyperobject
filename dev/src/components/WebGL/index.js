@@ -32,7 +32,7 @@ class WebGL extends Component {
   }
 
   resize() {
-    const ratio = 1.5;
+    const ratio = 1;
     this.scene.resize(window.innerWidth * ratio, window.innerHeight * ratio);
   }
 

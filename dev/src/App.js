@@ -21,14 +21,6 @@ class App extends Component {
       showFooter: false,
       pageToggle: 0,
     };
-
-    window.addEventListener("keydown", (e) => {
-      if (e.keyCode === 32) {
-        const { currentPage } = this.state;
-        const nextPage = currentPage === 6 ? 0 : currentPage + 1;
-        this.setState({ currentPage: nextPage });
-      }
-    });
   }
 
   prev() {
