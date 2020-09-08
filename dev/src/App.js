@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import ReactTooltip from "react-tooltip";
+
 import "./main.scss";
 
 // data
@@ -16,7 +18,7 @@ class App extends Component {
     super();
     this.state = {
       previousPage: 0,
-      currentPage: 0,
+      currentPage: 1,
       showTeamPage: false,
       showFooter: false,
       pageToggle: 0,
@@ -154,13 +156,35 @@ class App extends Component {
     return (
       <div className="App">
         <div
+          data-tip
+          data-for="arrowLeft"
           className={`arrow-left ${classNameArrow}`}
           onClick={() => this.prev()}
         />
+        <ReactTooltip
+          id="arrowLeft"
+          place="bottom"
+          type="light"
+          effect="float"
+          backgroundColor="#fff8e6"
+        >
+          <span>Previous Project</span>
+        </ReactTooltip>
         <div
+          data-tip
+          data-for="arrowRight"
           className={`arrow-right ${classNameArrow}`}
           onClick={() => this.next()}
         />
+        <ReactTooltip
+          id="arrowRight"
+          place="bottom"
+          type="light"
+          effect="float"
+          backgroundColor="#fff8e6"
+        >
+          <span>Next Project</span>
+        </ReactTooltip>
 
         <div className={classNameFooter}>
           <TextButton
