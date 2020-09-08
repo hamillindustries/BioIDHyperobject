@@ -16,13 +16,20 @@ class Slides extends Component {
     this.setState({ selected: mIndex });
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.show && !this.props.show) {
       this.setState({ selected: 0 });
 
       if (this.ref.current.pause) {
         this.ref.current.currentTime = 0;
         this.ref.current.pause();
+      }
+    }
+
+    if (this.props.show) {
+      if (this.ref.current.pause) {
+        this.ref.current.currentTime = 0;
+        this.ref.current.play();
       }
     }
   }
@@ -60,7 +67,6 @@ class Slides extends Component {
                 src={src}
                 width="100%"
                 controls
-                autoPlay
                 muted
                 className="slides-media"
               />

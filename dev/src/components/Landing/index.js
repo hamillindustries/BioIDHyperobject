@@ -15,11 +15,17 @@ class Landing extends Component {
       width: window.innerWidth,
       height: window.innerHeight,
       videoPlaying: true,
+      showPlayButton: true,
       showBackground: false,
     };
 
     this._refVideo = React.createRef();
     this._efIndex = alfrid.Scheduler.addEF(() => this._closeCheck());
+  }
+
+  _start() {
+    this._refVideo.current.play();
+    this.setState({ showPlayButton: false });
   }
 
   _closeCheck() {
@@ -33,7 +39,8 @@ class Landing extends Component {
     if (
       window.location.href.indexOf("skip") > -1 &&
       currentTime < duration - 1 &&
-      process.env.NODE_ENV === "development"
+      process.env.NODE_ENV === "development" &&
+      !this.state.showPlayButton
     ) {
       this._refVideo.current.currentTime = duration - 1;
     }
@@ -71,6 +78,7 @@ class Landing extends Component {
       firstTime,
       videoPlaying,
       showBackground,
+      showPlayButton,
     } = this.state;
     let className = `landing ${currentPage === 0 ? "show" : ""}`;
     if (showBackground) {
@@ -86,7 +94,17 @@ class Landing extends Component {
     return (
       <div className={className}>
         <div className={`landing-intro_video ${showVideo ? "" : "hide"}`}>
-          <video autoPlay muted src={videoSrc} ref={this._refVideo} />
+          <video src={videoSrc} ref={this._refVideo} />
+        </div>
+        <div
+          className={`landing_start-container ${showPlayButton ? "" : "hide"}`}
+        >
+          <div
+            className={`landing_start-button ${showPlayButton ? "" : "hide"}`}
+            onClick={() => this._start()}
+          >
+            <p>Start the visit</p>
+          </div>
         </div>
         <div className={`landing-background ${showBackground ? "show" : ""}`} />
         {Projects.map((project, i) => {
