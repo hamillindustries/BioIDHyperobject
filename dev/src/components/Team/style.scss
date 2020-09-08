@@ -36,6 +36,7 @@ $padding: 150px;
   height: 90vh;
   box-sizing: border-box;
   padding-left: $padding;
+  pointer-events: none;
 
   display: flex;
   flex-direction: column;

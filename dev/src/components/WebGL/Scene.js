@@ -85,8 +85,6 @@ class Scene {
       return;
     }
     const oSetting = Settings[mIndex - 1];
-    // console.log("goto", mIndex);
-    // console.log("using texture", `Project_0${mIndex}`);
     this._texture = Assets.get(`Project_0${mIndex}`);
 
     this.regenerate(oSetting);
@@ -98,7 +96,8 @@ class Scene {
     this.orbitalControl.radius.setTo(18);
     this.orbitalControl.radius.value = 15;
     this.control.rx.setTo(0);
-    this.control.ry.setTo(0);
+    this.control.ry.setTo(1.7);
+    this.control.ry.value = 0;
     this._offset.speed = 0.005;
     this._offset.value = 0;
   }

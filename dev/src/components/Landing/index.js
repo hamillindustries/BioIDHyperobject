@@ -31,6 +31,14 @@ class Landing extends Component {
     const threshold = 0.5;
     const { currentTime, duration } = this._refVideo.current;
 
+    if (
+      window.location.href.indexOf("skip") > -1 &&
+      currentTime < duration - 1 &&
+      process.env.NODE_ENV === "development"
+    ) {
+      this._refVideo.current.currentTime = duration - 1;
+    }
+
     if (duration - currentTime < threshold && !this.state.showBackground) {
       this.setState({ showBackground: true });
 
