@@ -5,7 +5,7 @@ export default [
     desc: `Biomaterials, or biologically growing materials from the bottom-up is a central theme at the Bio-Integrated Design Lab. A wide range of lab-based investigations are conducted in order to develop suitable environments that would induce controlled, but rapid and efficient growth of specific living organisms such as microalgae, cyanobacteria and mycelium. The growth parameters of the specific bioreactors are then translated via architectural design tools, in order to augment novel biomaterials for large-scale applications within the built environment.
 
     Primarily, three broad approaches are explored. The first, where biomaterials are grown within controlled environments into desired morphologies, later to be assembled to create macroscale structures. The second is the preparation and construction of biomaterials, that induce or support the growth of other microscopic organisms within their permeable environments; allowing the active biomaterial to respond to the changing environmental conditions, in turn impacting its biological processes. And the third is the creation of very specific growth conditions within the external environment that can, over a period-of-time allow the seeding, propagation and colonisation of roots and flowers of higher plant species to support biodiversity within the built environment.`,
-    position: "-2.5, -3",
+    position: "-2, -2.5",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ export default [
     Additionally, organisms such as cyanobacteria, microalgae and bacteria are also investigated for their ability to adapt, and evolve within other granular substrates such as sand, creating biofilms in response to the organism’s biosynthetic activity within a very specific urban context.
     
     Multiple computational simulations, and robotic extrusion techniques are explored to weave the desired vascular, living microenvironments into macroscale dimensions intentionally introducing complex tissue cultures into architectural-scale morphologies.`,
-    position: "-26, 16",
+    position: "-23, 14",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ export default [
     desc: `Identifying distinct ecological niches as disruptive opportunities within which biological processes can be initiated is a key research element at Bio-ID. For instance, tapping into the ability of specific living organisms, such as microalgae, bacteria and fungi to perform bioremediation as a by-product of their biosynthetic or metabolic activity within the architectural living scaffolds.
 
     Biohybrid scaffolds are explored, with varying combinations of existing materials such as textiles and ceramics to host biofilms such as P.purpureum, that have the ability to uptake contaminants such as microplastics from polluted water via bioaccumulation. These are further designed computationally into 3D porous structures allowing us to introduce the scaffolds within the existing urban context. `,
-    position: "-32, -8.5",
+    position: "-27.5, -7.5",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ export default [
     desc: `The bioengineer Olivier Guillitte defined the term bioreceptivity as ‘the aptitude of a material (or any other inanimate object) to be colonised by one or several groups of living organisms without necessarily undergoing any biodeterioration.’
 
     The projects in this category explore the potentials of introducing elements such as porosity, humidity/moisture, permeability as key parameters to existing building materials increasing passive vegetative growth in architecture, responding to the urgency of the current climate crisis by improving the environmental quality of cities. The aim is to promote self-regulated biological systems directly on building façades and urban infrastructures, integrating poikilohydric species (algae, mosses, lichens) that switch on and off their photosynthetic activity without the need for additional mechanical irrigation and maintenance, while also creating a new design aesthetic for ageing buildings.`,
-    position: "-19, -22",
+    position: "-16, -19",
   },
   {
     id: 5,
@@ -43,7 +43,7 @@ export default [
     A novel biomaterial composite is prepared from food waste, and organic binders; and a series of material tests are conducted in order to fine-tune the biological, chemical, mechanical, and degradable properties of the material. A material-driven robotic extrusion system is developed to facilitate the successful scale-up of structurally stable prototypes. Different stages of wetness, and dryness of the food-composite material are in particularly explored through geometric variations.
     
     Another element is the generation of energy, in the form of electrons emitted via a biological process. Small-scale microbial fuel cells are designed for integration within remote sites where access to energy is scarce, or completely absent. Demonstrating the different applications, a biological system can perform, provided they are designed and integrated within an appropriate scale and context.`,
-    position: "29.25, 4.8",
+    position: "29.5, 4",
   },
   {
     id: 6,
@@ -55,6 +55,6 @@ export default [
     Additionally, sensors are developed and integrated into the design workflow, introducing an element of responsiveness and communication between the designed scaffold and the varying environmental parameters in its surroundings, such as light, humidity, air, temperature and pH.
     
     `,
-    position: "22.5, -14",
+    position: "19.5, -12",
   },
 ];

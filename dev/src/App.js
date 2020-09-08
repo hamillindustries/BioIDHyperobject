@@ -20,7 +20,7 @@ class App extends Component {
     this.state = {
       previousPage: 0,
       currentPage: 0,
-      showTeamPage: true,
+      showTeamPage: false,
       showFooter: false,
       pageToggle: 0,
       locked: false,

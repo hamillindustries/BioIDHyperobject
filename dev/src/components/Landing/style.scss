@@ -69,8 +69,8 @@
     margin-left: -200px;
     width: 100%;
     text-align: center;
-    font-size: 32px;
-    letter-spacing: 2px;
+    font-size: 38px;
+    letter-spacing: 2.2px;
     user-select: none;
 
     transition: transform 0.5s ease-in-out;
@@ -162,4 +162,13 @@
     opacity: 0;
     pointer-events: none;
   }
+}
+
+.landing_link-container {
+  position: fixed;
+  left: 960px;
+  top: 540px;
+  width: 1920px;
+  height: 1080px;
+  transform-origin: 0% 0%;
 }

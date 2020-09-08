@@ -30,6 +30,9 @@ class Landing extends Component {
   }
 
   _closeCheck() {
+    if (!this._refVideo.current) {
+      return;
+    }
     if (isNaN(this._refVideo.current.duration)) {
       return;
     }
@@ -114,22 +117,31 @@ class Landing extends Component {
           </div>
         </div>
         <div className={`landing-background ${showBackground ? "show" : ""}`} />
-        {Projects.map((project, i) => {
-          const t = project.position.split(",").map((v) => parseFloat(v));
-          return (
-            <div
-              key={i}
-              className="landing_project-link"
-              style={{
-                left: `${t[0] * scale + 50}vw`,
-                top: `${t[1] * scale + 50}vh`,
-              }}
-              onClick={() => onSelect(i)}
-            >
-              <p>{project.name}</p>
-            </div>
-          );
-        })}
+        <div
+          className="landing_link-container"
+          style={{
+            transform: `scale( ${scale} , ${scale} )`,
+            left: `${window.innerWidth / 2}px`,
+            top: `${window.innerHeight / 2}px`,
+          }}
+        >
+          {Projects.map((project, i) => {
+            const t = project.position.split(",").map((v) => parseFloat(v));
+            return (
+              <div
+                key={i}
+                className="landing_project-link"
+                style={{
+                  left: `${t[0]}%`,
+                  top: `${t[1]}%`,
+                }}
+                onClick={() => onSelect(i)}
+              >
+                <p>{project.name}</p>
+              </div>
+            );
+          })}
+        </div>
       </div>
     );
   }
