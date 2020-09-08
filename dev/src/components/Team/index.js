@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Member from "./Member";
 import "./style.scss";
+import logoSrc from "../../images/logo.png";
 
 // data
 import TeamData from "../../data/teamData";
@@ -52,6 +53,7 @@ class Team extends Component {
           <div className="team_text-left team_text">
             <p className="team_member-title">{title}</p>
             <p className="team_member-desc" dangerouslySetInnerHTML={oIntro} />
+            <img className="team_logo" src={logoSrc} alt="Bio-ID"></img>
           </div>
           <div className="team_text-right team_text">
             {members.map((member, i) => {

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ReactTooltip from "react-tooltip";
 
 import "./main.scss";
+import logoSrc from "./images/logo.png";
 
 // data
 import ProjectPagesData from "./data/projectData.js";
@@ -155,6 +156,11 @@ class App extends Component {
 
     return (
       <div className="App">
+        <img
+          className={`logo ${showTeamPage ? "hide" : ""}`}
+          src={logoSrc}
+          alt="Bio-ID"
+        ></img>
         <div
           data-tip
           data-for="arrowLeft"

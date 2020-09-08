@@ -19,7 +19,6 @@ class Landing extends Component {
     };
 
     this._refVideo = React.createRef();
-
     this._efIndex = alfrid.Scheduler.addEF(() => this._closeCheck());
   }
 
