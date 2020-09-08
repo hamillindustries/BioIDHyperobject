@@ -10,12 +10,13 @@ class Landing extends Component {
   constructor(props) {
     super(props);
 
+    const skipping = window.location.href.indexOf("skip") > -1;
     this.state = {
       firstTime: true,
       width: window.innerWidth,
       height: window.innerHeight,
       videoPlaying: true,
-      showPlayButton: true,
+      showPlayButton: !skipping,
       showBackground: false,
     };
 
@@ -71,6 +72,7 @@ class Landing extends Component {
   }
 
   render() {
+    const skipping = window.location.href.indexOf("skip") > -1;
     const { currentPage, onSelect } = this.props;
     const {
       width,
@@ -94,7 +96,12 @@ class Landing extends Component {
     return (
       <div className={className}>
         <div className={`landing-intro_video ${showVideo ? "" : "hide"}`}>
-          <video src={videoSrc} ref={this._refVideo} />
+          <video
+            autoPlay={skipping}
+            muted={skipping}
+            src={videoSrc}
+            ref={this._refVideo}
+          />
         </div>
         <div
           className={`landing_start-container ${showPlayButton ? "" : "hide"}`}

@@ -23,7 +23,7 @@ $buttonSize: 50px;
 
 .team_conatiner-top {
   width: 100%;
-  margin-top: -$buttonSize * 2;
+  // margin-top: -$buttonSize * 2;
 }
 
 .team_text {
@@ -33,10 +33,9 @@ $buttonSize: 50px;
 
 $padding: 150px;
 .team_text-left {
-  height: 90vh;
+  height: 70vh;
   box-sizing: border-box;
   padding-left: $padding;
-  pointer-events: none;
 
   display: flex;
   flex-direction: column;
@@ -116,6 +115,7 @@ $padding: 150px;
 
 .team_text-right {
   // background-color: rgba(0, 255, 0, 0.25);
+  margin-top: -$buttonSize * 2;
   box-sizing: border-box;
   padding-right: $padding;
   padding-top: 25vh;
@@ -151,9 +151,6 @@ $padding: 150px;
 }
 
 .team_close {
-  // position: fixed;
-  // top: 50px;
-  // left: 150px;
   width: $buttonSize;
   height: $buttonSize;
   background: url("../../images/cross.png");

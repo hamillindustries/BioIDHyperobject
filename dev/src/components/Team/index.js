@@ -24,6 +24,12 @@ class Team extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.display && !prevProps.display) {
+      this.setState({ selectedIndex: -1 });
+    }
+  }
+
   componentDidMount() {
     this._timeout = setTimeout(() => this.playAnim(), 100);
   }
