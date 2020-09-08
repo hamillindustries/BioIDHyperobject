@@ -19,7 +19,7 @@ class App extends Component {
     super();
     this.state = {
       previousPage: 0,
-      currentPage: 1,
+      currentPage: 0,
       showTeamPage: false,
       showFooter: false,
       pageToggle: 0,
@@ -157,7 +157,7 @@ class App extends Component {
     return (
       <div className="App">
         <img
-          className={`logo ${showTeamPage ? "hide" : ""}`}
+          className={`logo ${showTeamPage || !showFooter ? "hide" : ""}`}
           src={logoSrc}
           alt="Bio-ID"
         ></img>
